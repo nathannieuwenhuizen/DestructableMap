@@ -2,31 +2,29 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class FadeOut : MonoBehaviour {
+public class Disappear : MonoBehaviour {
 
     [SerializeField]
-    private float fadeSpeed = 0.01f;
+    private float scaleSpeed = 0.01f;
     
     private Vector3 scale;
-    private Color temp;
-    
     void Start()
     {
         scale = transform.localScale;
-        StartCoroutine(FadeOver());
+        StartCoroutine(Shrinking());
     }
     void Update()
     {
         transform.localScale = scale;
     }
 
-    IEnumerator FadeOver()
+    IEnumerator Shrinking()
     {
         while (scale.x > 0)
         {
-            scale.x -= fadeSpeed;
-            scale.y -= fadeSpeed;
-            scale.z -= fadeSpeed;
+            scale.x -= scaleSpeed;
+            scale.y -= scaleSpeed;
+            scale.z -= scaleSpeed;
             yield return new WaitForFixedUpdate();
         }
         
